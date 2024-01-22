@@ -1,4 +1,7 @@
-﻿using System.Linq.Expressions;
+﻿using System;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace Domain.IRepositories
 {
@@ -6,11 +9,13 @@ namespace Domain.IRepositories
     {
         Task AddAsync(TEntity entity);
         IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> exp, params string[] includes);
+        Task<IQueryable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> exp, params string[] includes);
         Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> exp, params string[] includes);
-        public TEntity Get(Expression<Func<TEntity, bool>> exp, params string[] includes);
+        TEntity Get(Expression<Func<TEntity, bool>> exp, params string[] includes);
         Task<bool> IsExistAsync(Expression<Func<TEntity, bool>> exp, params string[] includes);
         Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> exp, params string[] includes);
         void Remove(TEntity entity);
+        Task RemoveAsync(TEntity entity);
         int Commit();
         Task<int> CommitAsync();
         Task UpdateAsync(TEntity entity);

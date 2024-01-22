@@ -13,6 +13,7 @@ namespace Infrastructure.Repositories
         {
             _context = context;
         }
+
         public async Task AddAsync(TEntity entity)
         {
             await _context.Set<TEntity>().AddAsync(entity);
@@ -22,15 +23,15 @@ namespace Infrastructure.Repositories
         {
             return _context.SaveChanges();
         }
+        public async Task<int> CommitAsync()
+        {
+            return await _context.SaveChangesAsync();
+        }
 
         public async Task UpdateAsync(TEntity entity)
         {
             _context.Set<TEntity>().Update(entity);
             await _context.SaveChangesAsync();
-        }
-        public async Task<int> CommitAsync()
-        {
-            return await _context.SaveChangesAsync();
         }
 
         public async Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> exp, params string[] includes)
@@ -46,6 +47,13 @@ namespace Infrastructure.Repositories
             var query = _context.Set<TEntity>().AsQueryable();
             if (includes != null) { foreach (var reff in includes) query = query.Include(reff); }
             return query.Where(exp);
+        }
+
+        public async Task<IQueryable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> exp, params string[] includes)
+        {
+            var query = _context.Set<TEntity>().AsQueryable();
+            if (includes != null) { foreach (var reff in includes) query = query.Include(reff); }
+            return await Task.FromResult(query.Where(exp));
         }
 
         public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> exp, params string[] includes)
@@ -86,6 +94,12 @@ namespace Infrastructure.Repositories
             _context.Set<TEntity>().Remove(entity);
         }
 
+        public async Task RemoveAsync(TEntity entity)
+        {
+            _context.Set<TEntity>().Remove(entity);
+            await _context.SaveChangesAsync();
+        }
+
         public IQueryable<TEntity> Include(IQueryable<TEntity> query, params string[] includes)
         {
             foreach (var include in includes)
@@ -95,6 +109,5 @@ namespace Infrastructure.Repositories
 
             return query;
         }
-
     }
 }

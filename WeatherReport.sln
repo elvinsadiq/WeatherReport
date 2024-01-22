@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Furniro", "Furniro\Furniro.csproj", "{9FC689A7-F26D-4567-BA2C-FFE5E9E18660}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{4EA2FD37-0BE1-42D0-B333-FDD8DE72631F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{7D211F44-68D6-4AE4-8AEC-DBE2A8F34E76}"
@@ -13,16 +11,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{8DA9D9F7-BE06-43D8-9616-E3A016CCDF99}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherReport", "WeatherReport\WeatherReport.csproj", "{8811CFFD-9C28-4FC6-9985-9028C5798ACA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9FC689A7-F26D-4567-BA2C-FFE5E9E18660}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9FC689A7-F26D-4567-BA2C-FFE5E9E18660}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9FC689A7-F26D-4567-BA2C-FFE5E9E18660}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9FC689A7-F26D-4567-BA2C-FFE5E9E18660}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4EA2FD37-0BE1-42D0-B333-FDD8DE72631F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4EA2FD37-0BE1-42D0-B333-FDD8DE72631F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EA2FD37-0BE1-42D0-B333-FDD8DE72631F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{8DA9D9F7-BE06-43D8-9616-E3A016CCDF99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DA9D9F7-BE06-43D8-9616-E3A016CCDF99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DA9D9F7-BE06-43D8-9616-E3A016CCDF99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8811CFFD-9C28-4FC6-9985-9028C5798ACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8811CFFD-9C28-4FC6-9985-9028C5798ACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8811CFFD-9C28-4FC6-9985-9028C5798ACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8811CFFD-9C28-4FC6-9985-9028C5798ACA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

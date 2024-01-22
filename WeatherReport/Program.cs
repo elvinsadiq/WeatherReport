@@ -70,7 +70,8 @@ builder.Services.AddCors(options =>
 });
 
 //Logger log = new LoggerConfiguration()
-//    .WriteTo.File("h:/root/home/immutable858-001/www/furniro/logs/log.txt")
+//    .WriteTo.File("h:/root/home/immutable858-001/www/
+//    /logs/log.txt")
 //    .Enrich.FromLogContext()
 //    .MinimumLevel.Information()
 //    .CreateLogger();
