@@ -95,7 +95,7 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 app.ConfigureExceptionHandler(app.Services.GetRequiredService<ILogger<Program>>());
-app.UseSerilogRequestLogging();
+//app.UseSerilogRequestLogging();
 app.UseHttpLogging();
 app.UseHttpsRedirection();
 

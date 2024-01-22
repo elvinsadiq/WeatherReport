@@ -6,6 +6,8 @@ namespace Application.DistrictDetails.Commands.Request
     public class UpdateDistrictCommandRequest : IRequest<UpdateDistrictCommandResponse>
     {
         public int Id { get; set; }
-        // Add properties relevant to the Update operation if needed
+        public string Title { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
     }
 }
