@@ -46,10 +46,14 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = false
         };
     });
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnectionString");
+
 builder.Services.AddDbContext<AppDbContext>(opt =>
 {
-    opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString"));
+    opt.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
+
 builder.Services.AddScoped<IApplicationDbContext, AppDbContext>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSingleton(provider => new MapperConfiguration(cfg =>
