@@ -1,14 +1,8 @@
 using Application;
-using Application.ApplicationUserDetails.Handlers.CommandHandlers;
-using Application.BlogDetails.Commands.Request;
-using Application.BlogDetails.Handlers.Validation;
-using Application.Commands.Request;
 using Application.Common.Interfaces;
-using Application.ContactMessageDetails.Handlers.Validation;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using AutoMapper;
-using FluentValidation;
 using FluentValidation.AspNetCore;
 using Infrastructure;
 using Infrastructure.GlobalExceptionHandlingMiddleware;
@@ -18,7 +12,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
-using Serilog.Core;
 using Swashbuckle.AspNetCore.Filters;
 using System.Reflection;
 
@@ -40,9 +33,7 @@ builder.Services.AddSwaggerGen(options =>
     });
     options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
-builder.Services.AddScoped<SendMailHandler, SendMailHandler>();
-builder.Services.AddScoped<IValidator<CreateBlogCommandRequest>, BlogValidator>();
-builder.Services.AddScoped<IValidator<CreateContactMessageCommandRequest>, ContactMessageValidator>();
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -78,13 +69,14 @@ builder.Services.AddCors(options =>
     });
 });
 
-Logger log = new LoggerConfiguration()
-    .WriteTo.File("h:/root/home/immutable858-001/www/furniro/logs/log.txt")
-    .Enrich.FromLogContext()
-    .MinimumLevel.Information()
-    .CreateLogger();
+//Logger log = new LoggerConfiguration()
+//    .WriteTo.File("h:/root/home/immutable858-001/www/furniro/logs/log.txt")
+//    .Enrich.FromLogContext()
+//    .MinimumLevel.Information()
+//    .CreateLogger();
 
-builder.Host.UseSerilog(log);
+//builder.Host.UseSerilog(log);
+
 builder.Services.AddApplicationServices();
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(
