@@ -8,6 +8,8 @@ namespace Domain.Entities
 {
     public class District : BaseEntity
     {
-
+        public string Title { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
     }
 }
