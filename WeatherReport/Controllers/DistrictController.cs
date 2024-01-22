@@ -19,14 +19,13 @@ namespace Furniro.AdminPanel.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreateDistrictCommandRequest request)
         {
-            var response = await _mediator.Send(request);
+            return Ok(await _mediator.Send(request));
+        }
 
-            if (response.IsSuccess)
-            {
-                return Ok();
-            }
-
-            return BadRequest(new { Message = "District creation failed." });
+        [HttpPost("upload")]
+        public async Task<IActionResult> Upload([FromForm] UploadDistrictCommandRequest request)
+        {
+            return Ok(await _mediator.Send(request));
         }
 
         [HttpGet]
@@ -51,25 +50,13 @@ namespace Furniro.AdminPanel.Controllers
         [HttpPut]
         public async Task<IActionResult> Update([FromBody] UpdateDistrictCommandRequest request)
         {
-            var response = await _mediator.Send(request);
-
-            if (response.IsSuccess)
-            {
-                return Ok(new { Message = "District updated successfully." });
-            }
-
-            return BadRequest(new { Message = "District update failed." });
+            return Ok(await _mediator.Send(request));
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromBody] DeleteDistrictCommandRequest request)
         {
-            var requestModel = new DeleteDistrictCommandRequest { Id = id };
-            var response = await _mediator.Send(requestModel);
-
-            return response.IsSuccess
-                ? (IActionResult)Ok(new { Message = "District deleted successfully." })
-                : NotFound(new { Message = "District not found." });
+            return Ok(await _mediator.Send(request));
         }
     }
 }

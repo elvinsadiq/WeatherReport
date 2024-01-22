@@ -32,5 +32,6 @@ namespace Application.DistrictDetails.Handlers.CommandHandlers
                 IsSuccess = true,
             };
         }
+
     }
 }
