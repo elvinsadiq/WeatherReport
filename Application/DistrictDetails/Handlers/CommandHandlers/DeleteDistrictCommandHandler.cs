@@ -25,7 +25,7 @@ namespace Application.DistrictDetails.Handlers.CommandHandlers
                 return new DeleteDistrictCommandResponse { IsSuccess = false };
             }
 
-            _repository.RemoveAsync(district);
+            _repository.Remove(district);
             await _repository.CommitAsync();
 
             return new DeleteDistrictCommandResponse

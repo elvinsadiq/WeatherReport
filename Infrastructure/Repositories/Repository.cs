@@ -49,13 +49,6 @@ namespace Infrastructure.Repositories
             return query.Where(exp);
         }
 
-        public async Task<IQueryable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> exp, params string[] includes)
-        {
-            var query = _context.Set<TEntity>().AsQueryable();
-            if (includes != null) { foreach (var reff in includes) query = query.Include(reff); }
-            return await Task.FromResult(query.Where(exp));
-        }
-
         public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> exp, params string[] includes)
         {
             var query = _context.Set<TEntity>().AsQueryable();
@@ -92,12 +85,6 @@ namespace Infrastructure.Repositories
         public void Remove(TEntity entity)
         {
             _context.Set<TEntity>().Remove(entity);
-        }
-
-        public async Task RemoveAsync(TEntity entity)
-        {
-            _context.Set<TEntity>().Remove(entity);
-            await _context.SaveChangesAsync();
         }
 
         public IQueryable<TEntity> Include(IQueryable<TEntity> query, params string[] includes)

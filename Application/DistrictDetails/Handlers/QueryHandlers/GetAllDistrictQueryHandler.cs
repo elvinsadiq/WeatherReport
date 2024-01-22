@@ -22,17 +22,16 @@ namespace Application.DistrictDetails.Handlers.QueryHandlers
 
         public async Task<List<GetAllDistrictQueryResponse>> Handle(GetAllDistrictQueryRequest request, CancellationToken cancellationToken)
         {
-            var districts = _repository.GetAllAsync(x => true);
+            var districts = _repository.GetAll(x => true);
 
             if (districts != null)
             {
                 List<GetAllDistrictQueryResponse> response = _mapper.Map<List<GetAllDistrictQueryResponse>>(districts);
                 return response;
             }
-            else
-            {
-                return new List<GetAllDistrictQueryResponse>();
-            }
+            
+            return new List<GetAllDistrictQueryResponse>();
+            
         }
     }
 }
