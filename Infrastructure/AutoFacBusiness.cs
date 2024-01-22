@@ -10,7 +10,7 @@ namespace Infrastructure
     {
         protected override void Load(ContainerBuilder builder)
         {
-            
+            //a.AddScoped<IDistrictRepository, DistrictRepository>();
         }
     }
 }
