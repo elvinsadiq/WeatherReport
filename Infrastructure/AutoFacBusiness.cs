@@ -11,6 +11,7 @@ namespace Infrastructure
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<DistrictRepository>().As<IDistrictRepository>();
+            builder.RegisterType<WeatherReportRepository>().As<IWeatherReportRepository>();
         }
     }
 }

@@ -18,6 +18,7 @@ namespace Infrastructure.Persistence
         }
 
         public DbSet<District> Districts { get; set; }
+        public DbSet<WeatherReport> WeatherReports { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
