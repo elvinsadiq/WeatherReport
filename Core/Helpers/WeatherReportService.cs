@@ -1,14 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Domain.Entities;
 using Domain.IRepositories;
-using Microsoft.EntityFrameworkCore.Metadata;
-using System.Net;
-using System.Xml.Linq;
+using System.Text.Json;
 
 namespace Core.Helpers
 {
@@ -49,6 +42,14 @@ namespace Core.Helpers
                                 if (response.IsSuccessStatusCode)
                                 {
                                     var content = await response.Content.ReadAsStringAsync();
+
+                                    var options = new JsonSerializerOptions
+                                    {
+                                        PropertyNameCaseInsensitive = true, // Handle case-insensitive property names
+                                    };
+
+
+                                    var weatherData = JsonSerializer.Deserialize<WeatherApiDto>(content, options);
                                     Console.WriteLine(content);
                                     // Parse and save the content to the database as needed
 
@@ -71,5 +72,67 @@ namespace Core.Helpers
                 }
             }
         }
+    }
+
+    public class WeatherApiDto
+    {
+        public Coord Coord { get; set; }
+        public Weather[] Weather { get; set; }
+        public string Base { get; set; }
+        public Main Main { get; set; }
+        public int Visibility { get; set; }
+        public Wind Wind { get; set; }
+        public Clouds Clouds { get; set; }
+        public long Dt { get; set; }
+        public Sys Sys { get; set; }
+        public int Timezone { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Cod { get; set; }
+    }
+
+    public class Coord
+    {
+        public float Lon { get; set; }
+        public float Lat { get; set; }
+    }
+
+    public class Weather
+    {
+        public int Id { get; set; }
+        public string Main { get; set; }
+        public string Description { get; set; }
+        public string Icon { get; set; }
+    }
+
+    public class Main
+    {
+        public float Temp { get; set; }
+        public float Feels_Like { get; set; }
+        public float Temp_Min { get; set; }
+        public float Temp_Max { get; set; }
+        public float Pressure { get; set; }
+        public float Humidity { get; set; }
+        public float Sea_Level { get; set; }
+        public float Grnd_Level { get; set; }
+    }
+
+    public class Wind
+    {
+        public float Speed { get; set; }
+        public float Deg { get; set; }
+        public float Gust { get; set; }
+    }
+
+    public class Clouds
+    {
+        public int All { get; set; }
+    }
+
+    public class Sys
+    {
+        public string Country { get; set; }
+        public long Sunrise { get; set; }
+        public long Sunset { get; set; }
     }
 }
