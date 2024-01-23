@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Hosting;
 using Domain.IRepositories;
 using System.Text.Json;
+using Domain.Entities;
 
 namespace Core.Helpers
 {
@@ -48,15 +49,32 @@ namespace Core.Helpers
                                         PropertyNameCaseInsensitive = true, // Handle case-insensitive property names
                                     };
 
-
                                     var weatherData = JsonSerializer.Deserialize<WeatherApiDto>(content, options);
-                                    Console.WriteLine(content);
-                                    // Parse and save the content to the database as needed
 
-                                    //var weatherreport = _mapper.Map<WeatherReport>(request);
+                                    var weatherReport = new WeatherReport
+                                    {
+                                        DistrictId = district.Id, // Assuming Id is the primary key of District
+                                        WeatherId = weatherData.Weather[0].Id,
+                                        Main = weatherData.Weather[0].Main,
+                                        Description = weatherData.Weather[0].Description,
+                                        Icon = weatherData.Weather[0].Icon,
+                                        Temp = weatherData.Main.Temp,
+                                        FeelsLike = weatherData.Main.Feels_Like,
+                                        TempMin = weatherData.Main.Temp_Min,
+                                        TempMax = weatherData.Main.Temp_Max,
+                                        Pressure = weatherData.Main.Pressure,
+                                        Humidity = weatherData.Main.Humidity,
+                                        SeaLevel = weatherData.Main.Sea_Level,
+                                        GroundLevel = weatherData.Main.Grnd_Level,
+                                        WindSpeed = weatherData.Wind.Speed,
+                                        WindDegree = weatherData.Wind.Deg,
+                                        WindGust = weatherData.Wind.Gust,
+                                        Clouds = weatherData.Clouds.All
+                                    };
 
-                                    //await _repository.AddAsync(weatherreport);
-                                    //await _repository.CommitAsync();
+
+                                    await _weatherReportRepository.AddAsync(weatherReport);
+                                    await _weatherReportRepository.CommitAsync();
                                 }
                                 else
                                 {

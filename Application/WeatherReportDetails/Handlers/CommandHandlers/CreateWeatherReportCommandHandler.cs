@@ -22,9 +22,9 @@ namespace Application.WeatherReportDetails.Handlers.CommandHandlers
 
         public async Task<CreateWeatherReportCommandResponse> Handle(CreateWeatherReportCommandRequest request, CancellationToken cancellationToken)
         {
-            var weatherreport = _mapper.Map<WeatherReport>(request);
+            var weatherReport = _mapper.Map<WeatherReport>(request);
 
-            await _repository.AddAsync(weatherreport);
+            await _repository.AddAsync(weatherReport);
             await _repository.CommitAsync();
 
             return new CreateWeatherReportCommandResponse
