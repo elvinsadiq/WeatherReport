@@ -19,14 +19,6 @@ namespace Infrastructure.Persistence.Configurations
             builder.Property(au => au.Longitude)
                 .IsRequired()
                 .HasMaxLength(100);
-
-            //builder.HasOne(au => au.AppUserRole)
-            //    .WithMany(ar => ar.AppUsers)
-            //    .HasForeignKey(au => au.RoleId);
-
-            //builder.HasMany(c => c.LoginFailureTrackers)
-            //    .WithOne(p => p.AppUser)
-            //    .HasForeignKey(p => p.AppUserId);
         }
     }
 }
