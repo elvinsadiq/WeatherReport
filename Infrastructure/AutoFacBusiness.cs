@@ -12,6 +12,7 @@ namespace Infrastructure
         {
             builder.RegisterType<DistrictRepository>().As<IDistrictRepository>();
             builder.RegisterType<WeatherReportRepository>().As<IWeatherReportRepository>();
+            builder.RegisterType<WeatherReportService>().As<IHostedService>().SingleInstance();
         }
     }
 }
