@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infrastructure.Migrations
 {
-    public partial class initial : Migration
+    public partial class OneToManyConfiguration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -73,8 +73,7 @@ namespace Infrastructure.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_WeatherReports_DistrictId",
                 table: "WeatherReports",
-                column: "DistrictId",
-                unique: true);
+                column: "DistrictId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

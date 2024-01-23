@@ -11,6 +11,6 @@ namespace Domain.Entities
         public string Title { get; set; }
         public string Latitude { get; set; }
         public string Longitude { get; set; }
-        public WeatherReport WeatherReport { get; set; }
+        public List<WeatherReport> WeatherReports { get; set; }
     }
 }

@@ -19,6 +19,10 @@ namespace Infrastructure.Persistence.Configurations
             builder.Property(au => au.Longitude)
                 .IsRequired()
                 .HasMaxLength(100);
+
+            builder.HasMany(ar => ar.WeatherReports)
+                .WithOne(au => au.District)
+                .HasForeignKey(au => au.DistrictId);
         }
     }
 }

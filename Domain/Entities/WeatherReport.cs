@@ -8,8 +8,9 @@ namespace Domain.Entities
 {
     public class WeatherReport : BaseEntity
     {
-        public int DistrictId { get; set; }
+        
         public District District { get; set; }
+        public int DistrictId { get; set; }
         public int WeatherId { get; set; }
         public string Main {  get; set; }
         public string Description { get; set; }

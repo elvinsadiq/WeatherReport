@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240123095743_initial")]
-    partial class initial
+    [Migration("20240123104608_OneToManyConfiguration")]
+    partial class OneToManyConfiguration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -111,8 +111,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DistrictId")
-                        .IsUnique();
+                    b.HasIndex("DistrictId");
 
                     b.ToTable("WeatherReports");
                 });
@@ -120,8 +119,8 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Entities.WeatherReport", b =>
                 {
                     b.HasOne("Domain.Entities.District", "District")
-                        .WithOne("WeatherReport")
-                        .HasForeignKey("Domain.Entities.WeatherReport", "DistrictId")
+                        .WithMany("WeatherReports")
+                        .HasForeignKey("DistrictId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -130,8 +129,7 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.District", b =>
                 {
-                    b.Navigation("WeatherReport")
-                        .IsRequired();
+                    b.Navigation("WeatherReports");
                 });
 #pragma warning restore 612, 618
         }

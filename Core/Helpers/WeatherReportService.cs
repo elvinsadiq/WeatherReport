@@ -24,7 +24,7 @@ namespace Core.Helpers
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                await Task.Delay(TimeSpan.FromSeconds(5), stoppingToken);
+                await Task.Delay(TimeSpan.FromHours(3), stoppingToken);
 
                 try
                 {

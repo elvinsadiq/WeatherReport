@@ -109,8 +109,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DistrictId")
-                        .IsUnique();
+                    b.HasIndex("DistrictId");
 
                     b.ToTable("WeatherReports");
                 });
@@ -118,8 +117,8 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Entities.WeatherReport", b =>
                 {
                     b.HasOne("Domain.Entities.District", "District")
-                        .WithOne("WeatherReport")
-                        .HasForeignKey("Domain.Entities.WeatherReport", "DistrictId")
+                        .WithMany("WeatherReports")
+                        .HasForeignKey("DistrictId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -128,8 +127,7 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.District", b =>
                 {
-                    b.Navigation("WeatherReport")
-                        .IsRequired();
+                    b.Navigation("WeatherReports");
                 });
 #pragma warning restore 612, 618
         }

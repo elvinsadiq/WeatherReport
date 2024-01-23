@@ -59,11 +59,9 @@ namespace Infrastructure.Persistence.Configurations
             builder.Property(au => au.Clouds)
                 .IsRequired();
 
-            // Configure the one-to-one relationship
-            builder.HasOne(w => w.District)
-                .WithOne(d => d.WeatherReport)
-                .HasForeignKey<WeatherReport>(w => w.DistrictId)
-                .OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(au => au.District)
+                .WithMany(ar => ar.WeatherReports)
+                .HasForeignKey(au => au.DistrictId);
         }
     }
 }
