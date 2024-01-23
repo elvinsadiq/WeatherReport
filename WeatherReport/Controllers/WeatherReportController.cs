@@ -49,7 +49,7 @@ namespace Furniro.AdminPanel.Controllers
         }
 
         [HttpDelete()]
-        public async Task<IActionResult> Delete([FromBody] UpdateWeatherReportCommandRequest request)
+        public async Task<IActionResult> Delete([FromBody] DeleteWeatherReportCommandRequest request)
         {
             return Ok(await _mediator.Send(request));
         }

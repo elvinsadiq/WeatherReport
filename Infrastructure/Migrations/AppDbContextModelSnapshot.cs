@@ -112,7 +112,7 @@ namespace Infrastructure.Migrations
                     b.HasIndex("DistrictId")
                         .IsUnique();
 
-                    b.ToTable("WeatherReport");
+                    b.ToTable("WeatherReports");
                 });
 
             modelBuilder.Entity("Domain.Entities.WeatherReport", b =>
