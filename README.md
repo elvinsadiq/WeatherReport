@@ -45,6 +45,7 @@ WeatherReport is a .NET Core Web API project built on .NET 6.0, designed to fetc
 1. Prepare an XML file with the longitude and latitude coordinates of your cities.
 Here as example for xml data that is used in this project:
 
+```xml
 <?xml version="1.0"?>
 <?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
@@ -107,12 +108,7 @@ Here as example for xml data that is used in this project:
   </WorksheetOptions>
  </Worksheet>
 </Workbook>
+```
 
 ## Background Service
 The `WeatherReportService` background service is configured to run every 3 hours automatically. It fetches and updates the weather information for all cities in the database based on their longitude and latitude coordinates.
-
-## Contributing
-Contributions are welcome! Please feel free to submit pull requests or open issues to suggest improvements or add new features.
-
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
